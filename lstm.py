@@ -1,25 +1,14 @@
 import time
 import warnings
 import numpy as np
+
 from numpy import newaxis
 from keras.layers.core import Dense, Activation, Dropout
 from keras.layers.recurrent import LSTM
 from keras.models import Sequential
-import matplotlib.pyplot as plt
+
 
 warnings.filterwarnings("ignore")
-
-
-def plot_results_multiple(predicted_data, true_data, prediction_len):
-    fig = plt.figure(facecolor='white')
-    ax = fig.add_subplot(111)
-    ax.plot(true_data, label='True Data')
-    # Pad the list of predictions to shift it in the graph to it's correct start
-    for i, data in enumerate(predicted_data):
-        padding = [None for p in range(i * prediction_len)]
-        plt.plot(padding + data, label='Prediction')
-        plt.legend()
-    plt.show()
 
 
 def load_data(filename, seq_len, normalise_window):
